@@ -1,21 +1,52 @@
-<h1>Добро пожаловать в GamePortal!</h1>
-<p>Ваш портал в мир компьютерных игр</p>
-
-<div style="margin-top: 2rem;">
-  <h3>Быстрые ссылки:</h3>
-  <ul>
-    <li><%= link_to "Игры", "#" %></li>
-    <li><%= link_to "Новости", "#" %></li>
-  </ul>
+<div class="hero-section bg-dark text-white py-5 rounded mb-4">
+  <div class="row align-items-center">
+    <div class="col-md-8">
+      <h1 class="display-4 fw-bold">Добро пожаловать в GamePortal</h1>
+      <p class="lead">Ваш надежный источник новостей, обзоров и сообщества игровой индустрии</p>
+      <div class="mt-4">
+        <a href="#" class="btn btn-primary btn-lg me-3">Смотреть игры</a>
+        <a href="#" class="btn btn-outline-light btn-lg">Читать новости</a>
+      </div>
+    </div>
+  </div>
 </div>
 
-<% if user_signed_in? %>
-  <div style="background: #e9ecef; padding: 1rem; border-radius: 0.25rem; margin-top: 2rem;">
-    <h4>Панель управления</h4>
-    <p>Вы вошли в систему как: <strong><%= current_user.email %></strong></p>
+<div class="row mt-5">
+  <div class="col-md-6">
+    <h3>О портале</h3>
+    <p>GamePortal - это современная платформа для геймеров, где вы можете:</p>
+    <ul>
+      <li>Изучать каталог игр</li>
+      <li>Читать и оставлять отзывы</li>
+      <li>Следить за последними новостями индустрии</li>
+      <li>Общаться с другими игроками</li>
+    </ul>
   </div>
-<% else %>
-  <div style="background: #fff3cd; padding: 1rem; border-radius: 0.25rem; margin-top: 2rem;">
-    <p>Для доступа ко всем функциям портала, пожалуйста, войдите или зарегистрируйтесь.</p>
+
+  <div class="col-md-6">
+    <% if user_signed_in? %>
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Панель управления</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Вы вошли в систему как: <strong><%= current_user.email %></strong></p>
+          <p class="card-text">Теперь вам доступны все функции портала!</p>
+        </div>
+      </div>
+    <% else %>
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Присоединяйтесь к сообществу</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Для доступа ко всем функциям портала, пожалуйста, войдите или зарегистрируйтесь.</p>
+          <div class="d-grid gap-2">
+            <%= link_to "Войти", new_user_session_path, class: "btn btn-primary" %>
+            <%= link_to "Регистрация", new_user_registration_path, class: "btn btn-outline-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
