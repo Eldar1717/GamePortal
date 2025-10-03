@@ -2,6 +2,9 @@ source "https://rubygems.org"
 
 ruby "3.2.3"
 
+gem 'devise'
+gem 'bootstrap', '~> 5.3.0'
+gem 'sassc-rails'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.5", ">= 7.1.5.2"
 
@@ -50,4 +53,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-
