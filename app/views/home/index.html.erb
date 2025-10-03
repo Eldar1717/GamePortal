@@ -1,10 +1,21 @@
-<h1>GamePortal - Главная страница</h1>
-<p>Добро пожаловать!</p>
+<h1>Добро пожаловать в GamePortal!</h1>
+<p>Ваш портал в мир компьютерных игр</p>
+
+<div style="margin-top: 2rem;">
+  <h3>Быстрые ссылки:</h3>
+  <ul>
+    <li><%= link_to "Игры", "#" %></li>
+    <li><%= link_to "Новости", "#" %></li>
+  </ul>
+</div>
 
 <% if user_signed_in? %>
-  <p>Вы вошли как: <%= current_user.email %></p>
-  <%= link_to "Выйти", destroy_user_session_path, method: :delete %>
+  <div style="background: #e9ecef; padding: 1rem; border-radius: 0.25rem; margin-top: 2rem;">
+    <h4>Панель управления</h4>
+    <p>Вы вошли в систему как: <strong><%= current_user.email %></strong></p>
+  </div>
 <% else %>
-  <%= link_to "Войти", new_user_session_path %> |
-  <%= link_to "Регистрация", new_user_registration_path %>
+  <div style="background: #fff3cd; padding: 1rem; border-radius: 0.25rem; margin-top: 2rem;">
+    <p>Для доступа ко всем функциям портала, пожалуйста, войдите или зарегистрируйтесь.</p>
+  </div>
 <% end %>
