@@ -15,18 +15,39 @@
       <div class="container">
         <a class="navbar-brand fw-bold" href="/">GamePortal</a>
 
-        <div class="navbar-nav ms-auto">
-          <% if user_signed_in? %>
-            <span class="navbar-text me-3">
-              Вы вошли как: <%= current_user.email %>
-            </span>
-            <%= link_to "Выйти", destroy_user_session_path,
-                       data: { turbo_method: :delete },
-                       class: "nav-link" %>
-          <% else %>
-            <%= link_to "Войти", new_user_session_path, class: "nav-link" %>
-            <%= link_to "Регистрация", new_user_registration_path, class: "nav-link" %>
-          <% end %>
+        <!-- Добавляем кнопку для мобильной версии -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Основная навигация -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <%= link_to "Главная", root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Игры", games_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Новости", "#", class: "nav-link" %>
+            </li>
+          </ul>
+
+          <!-- Аутентификация (оставляем как было) -->
+          <div class="navbar-nav">
+            <% if user_signed_in? %>
+              <span class="navbar-text me-3">
+                Вы вошли как: <%= current_user.email %>
+              </span>
+              <%= link_to "Выйти", destroy_user_session_path,
+                         data: { turbo_method: :delete },
+                         class: "nav-link" %>
+            <% else %>
+              <%= link_to "Войти", new_user_session_path, class: "nav-link" %>
+              <%= link_to "Регистрация", new_user_registration_path, class: "nav-link" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </nav>
