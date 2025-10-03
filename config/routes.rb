@@ -1,10 +1,10 @@
-# config/routes.rb
 Rails.application.routes.draw do
   root 'home#index'
 
-  # Добавляем маршрут для игр
-  get 'games', to: 'games#index'
+  resources :games, only: [:index, :show] do
+    resources :reviews, except: [:new, :show]
+    resources :comments, only: [:create] # для комментариев к отзывам
+  end
 
-  # Devise маршруты (должны быть уже)
   devise_for :users
 end
